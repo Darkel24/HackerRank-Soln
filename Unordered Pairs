@@ -1,0 +1,17 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+remainder_freq = {}
+k_divisibility = 0
+
+for i in range(n):
+    remainder = a[i] % k
+    complement = (k - remainder) % k
+    if complement in remainder_freq:
+        k_divisibility += remainder_freq[complement]
+    if remainder in remainder_freq:
+        remainder_freq[remainder] += 1
+    else:
+        remainder_freq[remainder] = 1
+
+print(k_divisibility)
